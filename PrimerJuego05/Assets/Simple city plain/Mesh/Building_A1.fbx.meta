@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: e48ed78ee18a85b4ab1b16c0f67824b5
-timeCreated: 1517349178
-licenseType: Store
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
@@ -15,47 +13,47 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: door 1
-    second: {fileID: 2100000, guid: 41e7faed0dc1d1b42a3763e973687756, type: 2}
+    second: {fileID: 2100000, guid: a50199a686cba87439ae301365378edb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: door 2
-    second: {fileID: 2100000, guid: 89ba04a87c90f8043945861050b46827, type: 2}
+    second: {fileID: 2100000, guid: 53343bd0feb946d4aa35540f14651415, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: facade
-    second: {fileID: 2100000, guid: f6fc837ebf04fbf479e5a5804862c742, type: 2}
+    second: {fileID: 2100000, guid: 8af53b5e2b810b744ac0629e4fb06a09, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roof 1
-    second: {fileID: 2100000, guid: 1b7dadfea37dfc2468b123f4b0799755, type: 2}
+    second: {fileID: 2100000, guid: b88f3e421c6f19c43b38fd76bf236692, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roof 2
-    second: {fileID: 2100000, guid: 519dde88dbb535c40bdd267be3afc0d5, type: 2}
+    second: {fileID: 2100000, guid: 73cbe4f6f9617c94ab580a9a5fa413bf, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: stone
-    second: {fileID: 2100000, guid: 0f62e1f21f8964e4d88427b0e9427f20, type: 2}
+    second: {fileID: 2100000, guid: a10cfa15821d9e24e8e672ef372eb5ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: window 1
-    second: {fileID: 2100000, guid: 4629e66666f7fe1458c2046685235306, type: 2}
+    second: {fileID: 2100000, guid: 8735325678611ac41911e59fa5036095, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: window 2
-    second: {fileID: 2100000, guid: 8d5952ca018788d408bfd944ad7ee5b7, type: 2}
+    second: {fileID: 2100000, guid: eb1e6c9d24470dc46bc50f856ff07bcd, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: window frames
-    second: {fileID: 2100000, guid: 9e2daa9517bae0f47b3d6d70aa4bb4c5, type: 2}
+    second: {fileID: 2100000, guid: 429134d7d77244d4db9294afe8c1328d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -74,6 +72,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -86,8 +85,9 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 0
+    meshCompression: 3
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -98,17 +98,24 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
@@ -122,7 +129,6 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
-    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

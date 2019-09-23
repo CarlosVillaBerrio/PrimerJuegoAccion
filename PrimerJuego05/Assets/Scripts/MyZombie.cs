@@ -52,8 +52,10 @@
 
             void Start()
             {
+                print("dasd");
                 VerificarVictima(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
-                StartCoroutine(EstadosComunes()); // CORRUTINA QUE ACTUALIZA LOS ESTADOS COMUNES DEL NPC               
+                StartCoroutine(EstadosComunes()); // CORRUTINA QUE ACTUALIZA LOS ESTADOS COMUNES DEL NPC      
+                heroObject = GameObject.Find("Heroe");
             }
 
             void OnDrawGizmos()
@@ -65,26 +67,22 @@
             {
                 if (Time.timeScale == 0) return; // DETIENE EL JUEGO SI ALCANZA AL HEROE
 
+                ActualizadorDeEstadoZombie();
+                VerificarVictima();
+                mostrarMensaje();
+
+
                 if (distanciaAldeano <= distanciaEntreObjetos) // CONDICIONAL QUE DETERMINA EL COMPORTAMIENTO DE PERSECUSION HACIA ALDEANOS
                 {
-                    ActualizadorDeEstadoZombie();
-                    VerificarVictima();
                     PerseguirVictima(datosZombie);
-                    mostrarMensaje();
                 }
                     else if (distanciaAJugador <= distanciaEntreObjetos) // CONDICIONAL QUE DETERMINA EL COMPORTAMIENTO DE PERSECUSION HACIA EL HEROE
                     {
-                        ActualizadorDeEstadoZombie();
-                        VerificarVictima();
                         PerseguirVictima(datosZombie);
-                        mostrarMensaje();
                     }
                         else // CONDICIONAL QUE DETERMINA EL COMPORTAMIENTO NORMAL
                         {
-                            ActualizadorDeEstadoZombie();
-                            VerificarVictima();
                             ComportamientoNormal();
-                            mostrarMensaje();
                         }                
             }
         }

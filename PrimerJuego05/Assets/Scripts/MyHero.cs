@@ -2,7 +2,7 @@
 using System;
 using NPC.Enemy;
 using NPC.Ally;
-using TMPro;
+using UnityEngine.UI;
 public class MyHero : MonoBehaviour
 {
     static System.Random r = new System.Random(); // VARIABLE AUXILIAR PARA ASIGNACION NATIVA DEL READONLY
@@ -12,17 +12,17 @@ public class MyHero : MonoBehaviour
     ZombieStruct datosZombie;
     bool contactoZombi;
     bool contactoAldeano;
-    public GameObject mensajito;
+    public Text mensajito;
     
     private void Start()
     {
-        var mensajitos = FindObjectsOfType<GameObject>(); // LISTA PARA DETECTAR EL GAME OVER
+        var mensajitos = FindObjectsOfType<Text>(); // LISTA PARA DETECTAR EL GAME OVER
         foreach (var item in mensajitos)
         {
-            if (item.name == "Mensaje Final")
+            if (item.name == "GAME OVER")
             {
                 mensajito = item; // ASIGNA EL TEXTO EN EL CANVAS CON EL GAME OVER
-                mensajito.SetActive(false); // DESACTIVA EL TEXTO CAMVAS DEL GAME OVER
+                mensajito.text = ""; // DESACTIVA EL TEXTO CAMVAS DEL GAME OVER
             }
         }
     }
@@ -56,7 +56,7 @@ public class MyHero : MonoBehaviour
             contactoZombi = true;
             datosZombie = collision.gameObject.GetComponent<MyZombie>().datosZombie; // Esto va en el colision de cada zombie o aldeano
             Debug.Log("Game Over");
-            mensajito.SetActive(true);
+            mensajito.text = "GAME OVER";
             // aqui saca el game over cuando lo tocan
             Time.timeScale = 0; // EL TIMESCALE LO VUELVE CERO PARA DETENER EL JUEGO CUANDO UN ZOMBIE TOQUE AL HEROE
 

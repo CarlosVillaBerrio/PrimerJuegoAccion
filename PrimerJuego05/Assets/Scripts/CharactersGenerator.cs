@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using NPC.Enemy;
 using NPC.Ally;
-using TMPro;
+using UnityEngine.UI;
 
-public class CharactersGenerato : MonoBehaviour
+public class CharactersGenerator : MonoBehaviour
 {
     static System.Random r = new System.Random(); // VARIABLE AUXILIAR PARA DECLARAR E INICIALIZAR EL READONLY
-    public readonly int limiteMinimo = r.Next(5,15); // LINEA NATIVA PARA ASIGNAR UN LIMITE ALEATORIO AL READONLY
-    const int limiteMaximo = 25; // CONSTANTE PARA LA GENERACION MAXIMA DE CUBOS
+    public readonly int limiteMinimo = r.Next(5,10); // LINEA NATIVA PARA ASIGNAR UN LIMITE ALEATORIO AL READONLY
+    const int limiteMaximo = 15; // CONSTANTE PARA LA GENERACION MAXIMA DE CUBOS
     int nAlly = 0, nEnemy = 0, limiteGenerado,generadorRandom; // VARIABLES PARA LA GENERACION DE CUBOS
     // HEROE VARIABLES Y FUNCION GENERADORA
     public GameObject cuboHeroe;
@@ -21,22 +21,24 @@ public class CharactersGenerato : MonoBehaviour
     GameObject enemys;
     GameObject allys;
 
-    public GameObject heroObject;
 
     // VARIABLES DEL TEXTO DEL CANVAS
-    public TextMeshProUGUI nEnemigos; 
-    public TextMeshProUGUI nAliados;
+    public Text nEnemigos; 
+    public Text nAliados;
     
 
     public void CreacionHeroe() // FUNCION GENERADORA DEL HEROE
     {
         // CREACION DEL HEROE
-        posHero = new Vector3(Random.Range(-40.0f, -34.0f), 0.0f, Random.Range(-40.0f, -34.0f)); // CALCULA UNA POSICION
+        posHero = new Vector3(Random.Range(-333.0f, -318.0f), 0.0f, Random.Range(-90.0f, -4.0f)); // CALCULA UNA POSICION
         heroe = GameObject.Instantiate(cuboHeroe, posHero, Quaternion.identity); // INSTANCIA AL HEROE EN ESCENA
         heroe.name = "Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY
         heroe.AddComponent<MyHero>(); // LE AÑADE EL COMPONENTE DE HEROE CON SUS DATOS
         heroe.AddComponent<HeroMove>(); // LE AÑADE EL COMPONENTE DE MOVIMIENTO
-
+        heroe.AddComponent<Rigidbody>().useGravity = false;
+        heroe.GetComponent<Rigidbody>().drag = 1.0f;
+        heroe.AddComponent<BoxCollider>().size = new Vector3(0.5f, 2f, 0.5f);
+        heroe.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
 
         // CREACION DE LA CAMARA QUE SIGUE AL HEROE
         camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 0.8f, heroe.transform.position.z); // CALCULA UNA POSICION
@@ -49,18 +51,22 @@ public class CharactersGenerato : MonoBehaviour
     // ZOMBIE VARIABLES Y FUNCION GENERADORA
     int colorZombie;
     public GameObject zombie;
+    public GameObject zombieP;
     public GameObject mensaje;
     public GameObject mensajeZombi;
 
     public void CreacionZombie(GameObject enemigos) // FUNCION GENERADORA DE LOS ZOMBIES
     {
-        zombie = GameObject.CreatePrimitive(PrimitiveType.Cube); // INSTANCIA UN CUBO COMO ZOMBIE EN LA ESCENA
+        Vector3 posZombi = new Vector3(Random.Range(-333.0f, -318.0f), 0.1f, Random.Range(-90.0f, -40.0f)); // CALCULA LA POSICION INICIAL DEL ZOMBIE EN ESCENA
+
+        zombie = GameObject.Instantiate(zombieP, posZombi, Quaternion.identity); // INSTANCIA UN CUBO COMO ZOMBIE EN LA ESCENA
         zombie.name = "Zombie"; // LO NOMBRA EN LA JERARQUIA DE UNITY
         zombie.transform.SetParent(enemigos.transform); // ASIGNA AL ZOMBIE COMO HIJO DE UN GRUPO QUE CONTIENE SOLO A LOS ZOMBIES
-        Vector3 posZombi = new Vector3(Random.Range(-14.0f, 14.0f), 0.0f, Random.Range(-14.0f, 14.0f)); // CALCULA LA POSICION INICIAL DEL ZOMBIE EN ESCENA
-        zombie.transform.position = posZombi; // UBICA AL ZOMBIE EN LA POSICION CALCULADA
-        zombie.AddComponent<Rigidbody>(); // AÑADE UN COMPONENTE DE CUERPO RIGIDO AL GAMEOBJECT
+        zombie.AddComponent<Rigidbody>().useGravity = true; // AÑADE UN COMPONENTE DE CUERPO RIGIDO AL GAMEOBJECT
         zombie.GetComponent<Rigidbody>().freezeRotation = true; // CONGELA LA ROTACION POR INERCIA DE FISICAS DE UNITY
+        zombie.GetComponent<Rigidbody>().drag = 2.0f;
+        zombie.AddComponent<BoxCollider>().size = new Vector3 (0.6f, 2f, 0.6f);
+        zombie.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
 
         mensajeZombi = Instantiate(mensaje); // CREA UN OBJETO MENSAJE
         mensajeZombi.name = "Mensaje"; // LO NOMBRA EN LA JERARQUIA DE UNITY
@@ -69,18 +75,7 @@ public class CharactersGenerato : MonoBehaviour
         mensajeZombi.transform.localPosition = Vector3.up; // LO SUBE UNA UNIDAD EN Y       
         zombie.AddComponent<MyZombie>(); // AÑADA EL COMPONENTE ZOMBIE CON SUS DATOS
         
-        switch (zombie.GetComponent<MyZombie>().datosZombie.colorZombi) // UNA VEZ OBTENIDOS LOS DATOS EN LA LINEA ANTERIOR SE LE DA UN COLOR AL ZOMBIE
-        {
-            case 0:
-                zombie.GetComponent<Renderer>().material.color = Color.cyan; // SE LE ASIGNA COLOR AZUL
-                break;
-            case 1:
-                zombie.GetComponent<Renderer>().material.color = Color.green; // SE LE ASIGNA COLOR VERDE
-                break;
-            case 2:
-                zombie.GetComponent<Renderer>().material.color = Color.magenta; // SE LE ASIGNA COLOR ROSA
-                break;
-        }
+        
     }
 
     // ALDEANO VARIABLES Y FUNCION GENERADORA
@@ -89,7 +84,7 @@ public class CharactersGenerato : MonoBehaviour
     public void CreacionAldeano(GameObject aliados)
     {
         aldeano = GameObject.CreatePrimitive(PrimitiveType.Cube); // CREA LA FIGURA SOLICITADA
-        Vector3 posAldeano = new Vector3(Random.Range(-10.0f, 10.0f), 0.0f, Random.Range(-10.0f, 10.0f)); // ELIGE UNA POSICION ALEATORIA
+        Vector3 posAldeano = new Vector3(Random.Range(-333.0f, -318.0f), 0.1f, Random.Range(-90.0f, -40.0f)); // ELIGE UNA POSICION ALEATORIA
         aldeano.transform.position = posAldeano; // ASIGNA LA POSICION A UNA VARIABLE
         aldeano.GetComponent<Renderer>().material.color = Color.black; // ASIGNACION DE UN COLOR AL ALDEANO
         aldeano.GetComponent<Transform>().localScale = new Vector3(1.0f, 2.0f, 1.0f); // ASIGNA UN COLOR PARA IDENTIFICAR A LOS ALDEANOS
@@ -138,16 +133,24 @@ public class CharactersGenerato : MonoBehaviour
 
     void Update() // ACTUALIZA EL CONTEO DE ALIADOS Y ENEMIGOS EN LA ESCENA
     {
-        var zombieList = FindObjectsOfType<MyZombie>();
+        MyZombie[] zombieList = FindObjectsOfType<MyZombie>();
         foreach (var item in zombieList)
         {
             nEnemigos.text = zombieList.Length.ToString();
         }
+        if (zombieList.Length == 0)
+        {
+            nEnemigos.text = "0";
+        }
 
-        var villagerList = FindObjectsOfType<MyVillager>();
+        MyVillager[] villagerList = FindObjectsOfType<MyVillager>();
         foreach (var item in villagerList)
         {
             nAliados.text = villagerList.Length.ToString();
+        }
+        if(villagerList.Length == 0)
+        {
+            nAliados.text = "0";
         }
     }
 }

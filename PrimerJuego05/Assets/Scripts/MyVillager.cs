@@ -49,6 +49,7 @@
             {
                 VerificarAgresor(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
                 StartCoroutine(EstadosComunes()); // CORRUTINA QUE ACTUALIZA LOS ESTADOS COMUNES DEL NPC 
+                heroObject = GameObject.Find("Heroe");
             }
 
             void OnDrawGizmos()
@@ -58,19 +59,18 @@
 
             void Update()
             {
+                VerificarAgresor();
+                ActualizadorDeEstadoAldeano();
+                mostrarMensaje();
+
+
                 if (distanciaAZombi <= distanciaEntreObjetos) // CONDICIONAL QUE DETERMINA LA HUIDA
                 {
-                    ActualizadorDeEstadoAldeano();
-                    VerificarAgresor();
                     HuirAgresor(datosAldeano);
-                    mostrarMensaje();
                 }
                     else // CONDICION POR DEFECTO PARA CUANDO SE COMPORTE NORMAL
                     {
-                        ActualizadorDeEstadoAldeano();
                         ComportamientoNormal();
-                        VerificarAgresor();
-                        mostrarMensaje();
                     }
             }
 
