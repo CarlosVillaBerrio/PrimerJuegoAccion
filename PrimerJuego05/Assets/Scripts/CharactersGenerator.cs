@@ -13,6 +13,11 @@ public class CharactersGenerator : MonoBehaviour
     int nAlly = 0, nEnemy = 0, limiteGenerado,generadorRandom; // VARIABLES PARA LA GENERACION DE CUBOS
     // HEROE VARIABLES Y FUNCION GENERADORA
     public GameObject cuboHeroe;
+    int selector;
+    public GameObject char_1;
+    public GameObject char_2;
+    public GameObject char_3;
+
     public GameObject heroe;
     public GameObject camaraHeroe;
     GameObject camara;
@@ -35,13 +40,13 @@ public class CharactersGenerator : MonoBehaviour
         heroe.name = "Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY
         heroe.AddComponent<MyHero>(); // LE AÑADE EL COMPONENTE DE HEROE CON SUS DATOS
         heroe.AddComponent<HeroMove>(); // LE AÑADE EL COMPONENTE DE MOVIMIENTO
-        heroe.AddComponent<Rigidbody>().useGravity = false;
-        heroe.GetComponent<Rigidbody>().drag = 1.0f;
+        heroe.AddComponent<Rigidbody>().useGravity = true;
+        heroe.GetComponent<Rigidbody>().drag = 4.0f;
         heroe.AddComponent<BoxCollider>().size = new Vector3(0.5f, 2f, 0.5f);
         heroe.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
 
         // CREACION DE LA CAMARA QUE SIGUE AL HEROE
-        camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 0.8f, heroe.transform.position.z); // CALCULA UNA POSICION
+        camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 1.8f, heroe.transform.position.z); // CALCULA UNA POSICION
         camara = Instantiate(camaraHeroe, camPos, Quaternion.identity); // iNSTANCIA A LA CAMARA EN ESCENA
         camara.AddComponent<HeroCam>(); // LE AÑADE EL COMPONENTE CON LAS FUNCIONES DE LA CAMARA
         camara.name = "Camara Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY
@@ -67,6 +72,8 @@ public class CharactersGenerator : MonoBehaviour
         zombie.GetComponent<Rigidbody>().drag = 2.0f;
         zombie.AddComponent<BoxCollider>().size = new Vector3 (0.6f, 2f, 0.6f);
         zombie.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
+        zombie.GetComponent<Transform>().localScale = new Vector3(1.0f, 1.2f, 1.0f); // ASIGNA UN COLOR PARA IDENTIFICAR A LOS ALDEANOS
+
 
         mensajeZombi = Instantiate(mensaje); // CREA UN OBJETO MENSAJE
         mensajeZombi.name = "Mensaje"; // LO NOMBRA EN LA JERARQUIA DE UNITY
@@ -83,12 +90,29 @@ public class CharactersGenerator : MonoBehaviour
     public GameObject mensajeAldeano;
     public void CreacionAldeano(GameObject aliados)
     {
-        aldeano = GameObject.CreatePrimitive(PrimitiveType.Cube); // CREA LA FIGURA SOLICITADA
         Vector3 posAldeano = new Vector3(Random.Range(-333.0f, -318.0f), 0.1f, Random.Range(-90.0f, -40.0f)); // ELIGE UNA POSICION ALEATORIA
-        aldeano.transform.position = posAldeano; // ASIGNA LA POSICION A UNA VARIABLE
-        aldeano.GetComponent<Renderer>().material.color = Color.black; // ASIGNACION DE UN COLOR AL ALDEANO
-        aldeano.GetComponent<Transform>().localScale = new Vector3(1.0f, 2.0f, 1.0f); // ASIGNA UN COLOR PARA IDENTIFICAR A LOS ALDEANOS
-        aldeano.AddComponent<Rigidbody>().freezeRotation = true; // AÑADE CUERPO SOLIDO AL ZOMBIE Y CONGELA LA ROTACION 
+
+        selector = Random.Range(0, 3);
+        switch (selector)
+        {
+            case 0:
+                aldeano = Instantiate(char_1, posAldeano, Quaternion.identity); // CREA LA FIGURA SOLICITADA
+                break;
+            case 1:
+                aldeano = Instantiate(char_2, posAldeano, Quaternion.identity); // CREA LA FIGURA SOLICITADA
+                break;
+            case 2:
+                aldeano = Instantiate(char_3, posAldeano, Quaternion.identity); // CREA LA FIGURA SOLICITADA
+                break;
+            default:
+                break;
+        }
+        aldeano.GetComponent<Transform>().localScale = new Vector3(1.0f, 1.2f, 1.0f); // ASIGNA UN COLOR PARA IDENTIFICAR A LOS ALDEANOS
+        aldeano.AddComponent<Rigidbody>().useGravity = true; // AÑADE UN COMPONENTE DE CUERPO RIGIDO AL GAMEOBJECT
+        aldeano.GetComponent<Rigidbody>().freezeRotation = true; // CONGELA LA ROTACION POR INERCIA DE FISICAS DE UNITY
+        aldeano.GetComponent<Rigidbody>().drag = 2.0f;
+        aldeano.AddComponent<BoxCollider>().size = new Vector3(0.6f, 2f, 0.6f);
+        aldeano.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
         aldeano.name = "Aldeano"; // NOMBRE DEL ALDEANO EN LA JERARQUIA
         aldeano.transform.SetParent(aliados.transform); // ALDEANO SE VUELVE HIJO DEL GRUPO DE ALIADOS
 

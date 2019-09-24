@@ -55487,6 +55487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cuboHeroe: {fileID: 100040, guid: cb71e0b181fbc8c4a9a3e9f45f8448f3, type: 3}
+  char_1: {fileID: 1221304300398589982, guid: 09dc2fce8617e7e40a2df94b7f0425ed, type: 3}
+  char_2: {fileID: 7674374549395511766, guid: 450f40a4e0e976d4dbb9bd7ef6ccf587, type: 3}
+  char_3: {fileID: 1408130088047907753, guid: 9563c870dbc4fc545be18d39d4130407, type: 3}
   heroe: {fileID: 0}
   camaraHeroe: {fileID: 2373772369361109842, guid: 4ec80e5e2397cac4e995f2e655389a8b,
     type: 3}

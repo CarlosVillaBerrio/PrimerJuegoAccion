@@ -20,7 +20,10 @@
         public class MyZombie : NPCRegulator
         {
             public ZombieStruct datosZombie; // SE CREA LA ESTRUCTURA DE LA CLASE ZOMBIE
-   
+            float y; // Para rotar mirando al personaje
+            int frames;
+            int frameActor;
+
             public void Awake() // ASIGNAMOS UN VALOR A LAS VARIABLES DE LA ESTRUCTURA
             {
                 datosZombie.gustoZombi = (ZombieStruct.gustosZombi)Random.Range(0, 5);
@@ -43,6 +46,9 @@
                     gameObject.GetComponentInChildren<TextMesh>().text = "Waaaarrrr quiero comer " + gameObject.GetComponent<MyZombie>().datosZombie.gustoZombi.ToString(); // MUESTRA EL MENSAJE COMO ZOMBIE
 
                     gameObject.GetComponentInChildren<TextMesh>().transform.rotation = heroObject.transform.rotation; // PERMITE MOSTRAR DE FRENTE EL MENSAJE AL HEROE EN TODO MOMENTO
+
+                    transform.eulerAngles = (new Vector3(0, 180, 0)) + (heroObject.transform.eulerAngles);
+
                 }
                 else
                 {
@@ -52,10 +58,12 @@
 
             void Start()
             {
-                print("dasd");
-                VerificarVictima(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
                 StartCoroutine(EstadosComunes()); // CORRUTINA QUE ACTUALIZA LOS ESTADOS COMUNES DEL NPC      
                 heroObject = GameObject.Find("Heroe");
+                AllGameObjects = FindObjectsOfType(typeof(GameObject)) as GameObject[]; // DEVUELVE UNA LISTA DE GAMEOBJECTS DE LA ESCENA
+                VerificarVictima(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
+                frameActor = Random.Range(60, 200);
+
             }
 
             void OnDrawGizmos()
@@ -67,8 +75,14 @@
             {
                 if (Time.timeScale == 0) return; // DETIENE EL JUEGO SI ALCANZA AL HEROE
 
+                frames++;
+                if (frames > frameActor)
+                {
+                    frames = 0;
+                    VerificarVictima(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
+                }
+
                 ActualizadorDeEstadoZombie();
-                VerificarVictima();
                 mostrarMensaje();
 
 
