@@ -54,7 +54,6 @@
             {
                 StartCoroutine(EstadosComunes()); // CORRUTINA QUE ACTUALIZA LOS ESTADOS COMUNES DEL NPC 
                 heroObject = GameObject.Find("Heroe");
-                AllGameObjects = FindObjectsOfType(typeof(GameObject)) as GameObject[]; // DEVUELVE UNA LISTA DE GAMEOBJECTS DE LA ESCENA
                 VerificarAgresor(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
                 frameActor = Random.Range(60,200);
             }
