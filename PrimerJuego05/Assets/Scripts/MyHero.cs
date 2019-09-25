@@ -5,15 +5,16 @@ using NPC.Ally;
 using UnityEngine.UI;
 public class MyHero : MonoBehaviour
 {
-    static System.Random r = new System.Random(); // VARIABLE AUXILIAR PARA ASIGNACION NATIVA DEL READONLY
-    public readonly float velHeroe = (float)r.NextDouble()*8.0f + 1.5f; // VELOCIDAD ALEATORIA DEL HEROE
+    public float velHeroe = 4.0f; // VELOCIDAD ALEATORIA DEL HEROE
 
     VillagerStruct datosAldeano;
     ZombieStruct datosZombie;
     bool contactoZombi;
     bool contactoAldeano;
     public Text mensajito;
-    
+    public float force = 450f;
+    public bool canJump = false;
+
     private void Start()
     {
         var mensajitos = FindObjectsOfType<Text>(); // LISTA PARA DETECTAR EL GAME OVER
@@ -29,11 +30,25 @@ public class MyHero : MonoBehaviour
 
     void Update() // CONDICIONES PARA MENSAJES POR CONTACTO
     {
-        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+            canJump = false;
+        }
+    }
+
+    void Jump()
+    {
+        if (canJump)
+            this.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (transform.position.y <= -0.35)
+            canJump = true;
+
         if (collision.transform.name == "Zombie")
         {
             Debug.Log("Game Over");

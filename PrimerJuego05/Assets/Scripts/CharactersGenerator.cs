@@ -42,7 +42,7 @@ public class CharactersGenerator : MonoBehaviour
         heroe.AddComponent<HeroMove>(); // LE AÑADE EL COMPONENTE DE MOVIMIENTO
         heroe.AddComponent<Rigidbody>().useGravity = true;
         heroe.GetComponent<Rigidbody>().drag = 4.0f;
-        heroe.AddComponent<BoxCollider>().size = new Vector3(0.5f, 2f, 0.5f);
+        heroe.AddComponent<BoxCollider>().size = new Vector3(0.7f, 2f, 0.7f);
         heroe.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
 
         // CREACION DE LA CAMARA QUE SIGUE AL HEROE
@@ -70,7 +70,7 @@ public class CharactersGenerator : MonoBehaviour
         zombie.AddComponent<Rigidbody>().useGravity = true; // AÑADE UN COMPONENTE DE CUERPO RIGIDO AL GAMEOBJECT
         zombie.GetComponent<Rigidbody>().freezeRotation = true; // CONGELA LA ROTACION POR INERCIA DE FISICAS DE UNITY
         zombie.GetComponent<Rigidbody>().drag = 2.0f;
-        zombie.AddComponent<BoxCollider>().size = new Vector3 (0.6f, 2f, 0.6f);
+        zombie.AddComponent<BoxCollider>().size = new Vector3 (0.7f, 2f, 0.7f);
         zombie.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
         zombie.GetComponent<Transform>().localScale = new Vector3(1.0f, 1.2f, 1.0f); // ASIGNA UN COLOR PARA IDENTIFICAR A LOS ALDEANOS
 
@@ -80,6 +80,7 @@ public class CharactersGenerator : MonoBehaviour
         mensajeZombi.transform.SetParent(zombie.transform); // EL MENSAJE SE VUELVE HIJO DE ZOMBIE
         mensajeZombi.transform.localPosition = Vector3.zero; // UBICA EN EL ORIGEN DE ZOMBIE
         mensajeZombi.transform.localPosition = Vector3.up; // LO SUBE UNA UNIDAD EN Y       
+        mensajeZombi.transform.localPosition += Vector3.up; // LO SUBE UNA UNIDAD EN Y       
         zombie.AddComponent<MyZombie>(); // AÑADA EL COMPONENTE ZOMBIE CON SUS DATOS
         
         
@@ -111,7 +112,7 @@ public class CharactersGenerator : MonoBehaviour
         aldeano.AddComponent<Rigidbody>().useGravity = true; // AÑADE UN COMPONENTE DE CUERPO RIGIDO AL GAMEOBJECT
         aldeano.GetComponent<Rigidbody>().freezeRotation = true; // CONGELA LA ROTACION POR INERCIA DE FISICAS DE UNITY
         aldeano.GetComponent<Rigidbody>().drag = 2.0f;
-        aldeano.AddComponent<BoxCollider>().size = new Vector3(0.6f, 2f, 0.6f);
+        aldeano.AddComponent<BoxCollider>().size = new Vector3(0.7f, 2f, 0.7f);
         aldeano.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
         aldeano.name = "Aldeano"; // NOMBRE DEL ALDEANO EN LA JERARQUIA
         aldeano.transform.SetParent(aliados.transform); // ALDEANO SE VUELVE HIJO DEL GRUPO DE ALIADOS
@@ -121,6 +122,7 @@ public class CharactersGenerator : MonoBehaviour
         mensajeAldeano.transform.SetParent(aldeano.transform); // LO VUELVE HIJO DE ALDEANO
         mensajeAldeano.transform.localPosition = Vector3.zero; // UBICA EN EL ORIGEN DE ALDEANO
         mensajeAldeano.transform.localPosition = Vector3.up; // LO SUBE UNA UNIDAD EN Y   
+        mensajeAldeano.transform.localPosition += Vector3.up; // LO SUBE UNA UNIDAD EN Y   
         aldeano.AddComponent<MyVillager>(); // AÑADA EL COMPONENTE ALDEANO CON SUS DATOS
     }
 

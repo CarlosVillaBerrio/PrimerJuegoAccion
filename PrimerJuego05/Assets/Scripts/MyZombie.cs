@@ -29,7 +29,7 @@
                 datosZombie.gustoZombi = (ZombieStruct.gustosZombi)Random.Range(0, 5);
                 datosZombie.colorZombi = Random.Range(0, 3);
                 datosZombie.edadZombi = Random.Range(15, 101);
-                datosZombie.velocidadZombi = 2.5f;
+                datosZombie.velocidadZombi = 2.8f;
                 edad = datosZombie.edadZombi; // VARIABLE HEREDADA QUE AYUDA AL FUNCIONAMIENTO DE LAS FUNCIONES IGUALES DE AMBOS NPC
                 velocidad = datosZombie.velocidadZombi; // VARIABLE HEREDADA QUE AYUDA AL FUNCIONAMIENTO DE LAS FUNCIONES IGUALES DE AMBOS NPC
             }

@@ -43,7 +43,7 @@
             {
                 datosAldeano.nombreAldeano = (VillagerStruct.nombresAldeano)Random.Range(0, 20); // SELECTOR DE NOMBRES
                 datosAldeano.edadAldeano = Random.Range(15, 101); // SELECTOR DE EDAD
-                datosAldeano.velocidadAldeano = 4.0f;
+                datosAldeano.velocidadAldeano = 3.7f;
                 edad = datosAldeano.edadAldeano; // VARIABLE HEREDADA QUE AYUDA AL FUNCIONAMIENTO DE LAS FUNCIONES IGUALES DE AMBOS NPC
                 velocidad = datosAldeano.velocidadAldeano; // VARIABLE HEREDADA QUE AYUDA AL FUNCIONAMIENTO DE LAS FUNCIONES IGUALES DE AMBOS NPC
                 gameObject.GetComponentInChildren<TextMesh>().text = "Hola soy " + gameObject.GetComponent<MyVillager>().datosAldeano.nombreAldeano.ToString() + " y tengo " + gameObject.GetComponent<MyVillager>().datosAldeano.edadAldeano.ToString() + " años";
