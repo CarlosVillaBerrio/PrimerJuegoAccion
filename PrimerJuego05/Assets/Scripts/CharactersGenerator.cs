@@ -46,7 +46,7 @@ public class CharactersGenerator : MonoBehaviour
         heroe.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
 
         // CREACION DE LA CAMARA QUE SIGUE AL HEROE
-        camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 1.8f, heroe.transform.position.z); // CALCULA UNA POSICION
+        camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 1.6f, heroe.transform.position.z); // CALCULA UNA POSICION
         camara = Instantiate(camaraHeroe, camPos, Quaternion.identity); // iNSTANCIA A LA CAMARA EN ESCENA
         camara.AddComponent<HeroCam>(); // LE AÑADE EL COMPONENTE CON LAS FUNCIONES DE LA CAMARA
         camara.name = "Camara Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY

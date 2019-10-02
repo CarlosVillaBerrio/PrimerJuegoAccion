@@ -14,6 +14,8 @@ public class MyHero : MonoBehaviour
     public Text mensajito;
     public float force = 450f;
     public bool canJump = false;
+    GameObject laBala;
+
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class MyHero : MonoBehaviour
                 mensajito.text = ""; // DESACTIVA EL TEXTO CAMVAS DEL GAME OVER
             }
         }
+        laBala = GameObject.Find("Bala");
     }
 
     void Update() // CONDICIONES PARA MENSAJES POR CONTACTO
