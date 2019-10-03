@@ -25,7 +25,7 @@ public class CharactersGenerator : MonoBehaviour
     Vector3 camPos;
     GameObject enemys;
     GameObject allys;
-
+    GameObject hombroDerecho;
 
     // VARIABLES DEL TEXTO DEL CANVAS
     public Text nEnemigos; 
@@ -51,6 +51,9 @@ public class CharactersGenerator : MonoBehaviour
         camara.AddComponent<HeroCam>(); // LE AÑADE EL COMPONENTE CON LAS FUNCIONES DE LA CAMARA
         camara.name = "Camara Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY
         camara.transform.SetParent(heroe.transform); // ASIGNA A LA CAMARA COMO HIJA DEL HEROE PARA QUE LO SIGA
+
+        hombroDerecho = GameObject.Find("Hombro Derecho");
+        hombroDerecho.transform.SetParent(camara.transform);
     }
 
     // ZOMBIE VARIABLES Y FUNCION GENERADORA

@@ -23,6 +23,7 @@
             float y; // Para rotar mirando al personaje
             int frames;
             int frameActor;
+            int vidaZombie = 3;
 
             public void Awake() // ASIGNAMOS UN VALOR A LAS VARIABLES DE LA ESTRUCTURA
             {
@@ -62,6 +63,7 @@
                 heroObject = GameObject.Find("Heroe");
                 VerificarVictima(); // PRIMER CALCULO DE OBJETOS EN LA ESCENA
                 frameActor = Random.Range(60, 150);
+                vidaMostro = vidaZombie;
 
             }
 
@@ -96,7 +98,9 @@
                         else // CONDICIONAL QUE DETERMINA EL COMPORTAMIENTO NORMAL
                         {
                             ComportamientoNormal();
-                        }                
+                        }
+                if (vidaMostro == 0)
+                    Destroy(gameObject);
             }
         }
     }

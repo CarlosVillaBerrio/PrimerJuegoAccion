@@ -15,7 +15,7 @@ public class MyHero : MonoBehaviour
     public float force = 450f;
     public bool canJump = false;
     GameObject laBala;
-
+    
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class MyHero : MonoBehaviour
                 mensajito.text = ""; // DESACTIVA EL TEXTO CAMVAS DEL GAME OVER
             }
         }
-        laBala = GameObject.Find("Bala");
+
     }
 
     void Update() // CONDICIONES PARA MENSAJES POR CONTACTO
@@ -39,6 +39,8 @@ public class MyHero : MonoBehaviour
             Jump();
             canJump = false;
         }
+
+        
     }
 
     void Jump()
@@ -46,7 +48,6 @@ public class MyHero : MonoBehaviour
         if (canJump)
             this.GetComponent<Rigidbody>().AddForce(Vector3.up * force);
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (transform.position.y <= -0.35)

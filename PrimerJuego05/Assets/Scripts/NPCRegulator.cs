@@ -11,6 +11,7 @@ public class NPCRegulator : MonoBehaviour
     public float distanciaEntreObjetos = 5.0f;
     public int seMueve, selectorDireccional, edad, estadoActual;
     public float velocidad;
+    public int vidaMostro;
     public GameObject heroObject;
    // public GameObject villagerObject;
    // public GameObject zombiObject;

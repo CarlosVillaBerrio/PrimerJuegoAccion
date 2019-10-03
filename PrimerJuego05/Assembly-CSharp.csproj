@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Rabbits\Demo\Scripts\AnimatorParamatersChange.cs" />
     <Compile Include="Assets\Scripts\CharactersGenerator.cs" />
     <Compile Include="Assets\Scripts\HeroCam.cs" />
     <Compile Include="Assets\Scripts\HeroMove.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Assets\Scripts\MyVillager.cs" />
     <Compile Include="Assets\Scripts\MyZombie.cs" />
     <Compile Include="Assets\Scripts\NPCRegulator.cs" />
+    <Compile Include="Assets\SurvivalStylizedCharacters\Assets\Models\Character\Balahoria.cs" />
     <None Include="Assets\Simple city plain\Read_me.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Aprendiz/Documents/GitHub/PrimerJuegoAccion/PrimerJuego05/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
