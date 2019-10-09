@@ -3,6 +3,8 @@ using System;
 using NPC.Enemy;
 using NPC.Ally;
 using UnityEngine.UI;
+
+
 public class MyHero : MonoBehaviour
 {
     public float velHeroe = 4.0f; // VELOCIDAD ALEATORIA DEL HEROE
@@ -14,8 +16,6 @@ public class MyHero : MonoBehaviour
     public Text mensajito;
     public float force = 450f;
     public bool canJump = false;
-    GameObject laBala;
-    
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class MyHero : MonoBehaviour
 
         
     }
-
+    
     void Jump()
     {
         if (canJump)
