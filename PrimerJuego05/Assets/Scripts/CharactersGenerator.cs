@@ -42,16 +42,6 @@ public class CharactersGenerator : MonoBehaviour
         heroe.AddComponent<HeroMove>(); // LE AÑADE EL COMPONENTE DE MOVIMIENTO
         heroe.AddComponent<Rigidbody>().useGravity = true;
         heroe.GetComponent<Rigidbody>().drag = 4.0f;
-        heroe.AddComponent<BoxCollider>().size = new Vector3(0.7f, 2f, 0.7f);
-        heroe.GetComponent<BoxCollider>().center = new Vector3(0f, 0.96f, 0f);
-
-        // CREACION DE LA CAMARA QUE SIGUE AL HEROE
-        camPos = new Vector3(heroe.transform.position.x, heroe.transform.position.y + 1.65f, heroe.transform.position.z -0.05f); // CALCULA UNA POSICION
-        camara = Instantiate(camaraHeroe, camPos, Quaternion.identity); // iNSTANCIA A LA CAMARA EN ESCENA
-        camara.AddComponent<HeroCam>(); // LE AÑADE EL COMPONENTE CON LAS FUNCIONES DE LA CAMARA
-        camara.name = "Camara Heroe"; // LO NOMBRA EN LA JERARQUIA DE UNITY
-        camara.transform.SetParent(heroe.transform); // ASIGNA A LA CAMARA COMO HIJA DEL HEROE PARA QUE LO SIGA
-        
     }
 
     // ZOMBIE VARIABLES Y FUNCION GENERADORA

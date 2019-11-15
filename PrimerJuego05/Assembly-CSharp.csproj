@@ -60,17 +60,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\DecalDestroyer.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ExtinguishableFire.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\GunAim.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\GunShoot.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleCollision.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleExamples.cs" />
+    <Compile Include="Assets\EffectExamples\Shared\Scripts\ParticleMenu.cs" />
+    <Compile Include="Assets\EffectExamples\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Rabbits\Demo\Scripts\AnimatorParamatersChange.cs" />
-    <Compile Include="Assets\Scripts\Balahoria.cs" />
+    <Compile Include="Assets\Scripts\BalanceoDeArma.cs" />
+    <Compile Include="Assets\Scripts\BalanceoMovimiento.cs" />
     <Compile Include="Assets\Scripts\CharactersGenerator.cs" />
-    <Compile Include="Assets\Scripts\ComportamientoArma.cs" />
     <Compile Include="Assets\Scripts\ControladorArmas.cs" />
     <Compile Include="Assets\Scripts\HeroCam.cs" />
     <Compile Include="Assets\Scripts\HeroMove.cs" />
+    <Compile Include="Assets\Scripts\LogicaArma.cs" />
     <Compile Include="Assets\Scripts\MyHero.cs" />
     <Compile Include="Assets\Scripts\MyVillager.cs" />
     <Compile Include="Assets\Scripts\MyZombie.cs" />
     <Compile Include="Assets\Scripts\NPCRegulator.cs" />
+    <Compile Include="Assets\Scripts\PantallaBalas.cs" />
+    <Compile Include="Assets\Scripts\Vida.cs" />
+    <None Include="Assets\EffectExamples\Shared\Shaders\SurfaceShader_VC.shader" />
     <None Include="Assets\Simple city plain\Read_me.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/carlo/Documents/GitHub/PrimerJuegoAccion/PrimerJuego05/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

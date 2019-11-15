@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Simple city plain/scene/Nivel Ciudad.unity
+- path: Assets/Scenes/Nivel Ciudad.unity
   isLoaded: 1
   isActive: 1

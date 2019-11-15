@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class ControladorArmas : MonoBehaviour
 {
-    public ComportamientoArma[] armas;
-    int indiceArmaActual = 0;
-    GameObject camaraHeroe;
-
-    GameObject hombroDerechoP;
-    GameObject hombroDerechoR;
-
+    public LogicaArma[] armas;
+    private int indiceArmaActual = 0;
+    // Start is called before the first frame update
     void Start()
     {
-        camaraHeroe = GameObject.Find("Camara Heroe");
-        hombroDerechoP = GameObject.Find("Hombro Derecho P");
-        hombroDerechoP.transform.rotation = Quaternion.Euler(new Vector3(143f, 32f, -51.7f));
-        hombroDerechoR = GameObject.Find("Hombro Derecho R");
-        armas[1].gameObject.SetActive(false);
-
+        
     }
 
+    // Update is called once per frame
     void Update()
     {
         RevisarCambioDeArma();
@@ -41,11 +33,17 @@ public class ControladorArmas : MonoBehaviour
         if(ruedaMouse > 0f)
         {
             SeleccionarArmaAnterior();
-        }else if(ruedaMouse < 0f)
+            armas[indiceArmaActual].recargando = false;
+            armas[indiceArmaActual].tiempoNoDisparo = false;
+            armas[indiceArmaActual].estaADS = false;
+        }
+        else if (ruedaMouse < 0f)
         {
             SeleccionarArmaSiguiente();
+            armas[indiceArmaActual].recargando = false;
+            armas[indiceArmaActual].tiempoNoDisparo = false;
+            armas[indiceArmaActual].estaADS = false;
         }
-
     }
 
     void SeleccionarArmaAnterior()
@@ -63,7 +61,7 @@ public class ControladorArmas : MonoBehaviour
 
     void SeleccionarArmaSiguiente()
     {
-        if (indiceArmaActual >= (armas.Length - 1))
+        if(indiceArmaActual >= (armas.Length -1))
         {
             indiceArmaActual = 0;
         }

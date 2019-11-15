@@ -5,7 +5,6 @@ public class HeroCam : MonoBehaviour
     float mouseX; // Declaracion de mouse X
     float mouseY; // declaracion de mouse Y
     public bool InvertedMouse; // Condiciona la camara invertida
-
     void Update()
     {
         if (Time.timeScale == 0) return;
